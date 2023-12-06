@@ -134,6 +134,7 @@ ul.dropdown__list {
   border: 2px solid $base-color-purple;
   color: $base-color-cream;
   cursor: pointer;
+  font-weight: bold;
   padding: $dropdown__spacing--sm;
   transition-duration: .15s;
   transition-timing-function: ease-in-out;
@@ -141,6 +142,13 @@ ul.dropdown__list {
   &:hover {
     background-color: rgba($base-color-purple, .75);
     border: 2px solid rgba($base-color-purple, .75);
+  }
+
+  &:disabled {
+    background-color: rgba($base-color-black, .15);
+    border: 2px solid rgba($base-color-black, .15);
+    color: rgba($base-color-black, .5);
+    cursor: not-allowed;
   }
 }
 
