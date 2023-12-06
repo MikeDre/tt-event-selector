@@ -8,6 +8,7 @@ $dropdown__spacing--sm: $dropdown__spacing / 2;
 $dropdown__spacing--lg: $dropdown__spacing * 2;
 
 #dropdown {
+  margin-top: $dropdown__spacing;
 
   &.active {
     .dropdown__chevron {
@@ -156,4 +157,37 @@ ul.dropdown__list {
   transform: rotate(0);
   transition-duration: .15s;
   transition-timing-function: ease-in-out;
+}
+
+.dropdwn__extra-features {
+  background-color: $base-color-white;
+  border-left: 2px solid rgba($base-color-black, 0.125);
+  border-right: 2px solid rgba($base-color-black, 0.125);
+  border-top: 2px solid rgba($base-color-black, 0.125);
+  display: none;
+  flex-direction: row;
+  gap: $dropdown__spacing--sm / 2;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: $dropdown__spacing--sm;
+  max-height: 270px;
+  overflow-y: scroll;
+  padding: $dropdown__spacing;
+
+  input {
+    border: 0;
+    height: 1.5rem;
+    padding: 0 $dropdown__spacing--sm;
+    font-size: 1.25rem;
+  }
+
+  .dropdwn__datepicker {
+    color: $base-color-purple;
+    font-size: 1.25rem;
+  }
+
+  &.active {
+    display: flex;
+    margin-bottom: -16px;
+  }
 }

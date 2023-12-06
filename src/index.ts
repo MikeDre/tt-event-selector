@@ -8,32 +8,32 @@ const sample_event_data: EventItem[] = [
   {
     id: 2,
     title: "Christmas Party",
-    date: "18th Dec 2023",
+    date: "18th December 2023",
     time: "19:00"
   },
   {
     id: 3,
-    title: "Half Marathon",
-    date: "15th Sept 2024",
-    time: "13:00"
+    title: "New Years Party",
+    date: "31st December 2023",
+    time: "00:00"
   },
   {
     id: 4,
-    title: "Summer Party",
-    date: "7th July 2023",
-    time: "15:00"
+    title: "Rock Concert",
+    date: "7th January 2024",
+    time: "20:00"
   },
   {
     id: 5,
-    title: "Christmas Party",
-    date: "18th Dec 2023",
+    title: "Pilates Class",
+    date: "10th January 2024",
     time: "19:00"
   },
   {
     id: 6,
-    title: "Half Marathon",
-    date: "15th Sept 2024",
-    time: "13:00"
+    title: "Cooking Class",
+    date: "15th January 2024",
+    time: "13:30"
   }
 ];
 
@@ -53,6 +53,8 @@ const $dropdown_header = document.querySelector('.dropdown__header') as HTMLElem
 const $dropdown_list = document.querySelector('.dropdown__list') as HTMLElement;
 const $dropdown_selection_overview = document.querySelector('.dropdown__selection-overview') as HTMLElement;
 const $dropdown_submit_btn = document.querySelector('.dropdown__selection-submit') as HTMLElement;
+const $addtional_features_toggle = document.querySelector('.addtional_features') as HTMLElement;
+const $addtional_features = document.querySelector('.dropdwn__extra-features') as HTMLElement;
 
 function handleDropdownToggle(e: ClickTouchEvent) {
   $dropdown?.classList.toggle('active');
@@ -148,8 +150,12 @@ function loadEvents(events: EventItem[]) {
   updateSelectedItems();
 }
 
+function showAddtionalFeatures() {
+  $addtional_features?.classList.toggle('active');
+}
+
 $dropdown_header?.addEventListener('click', handleDropdownToggle);
 $dropdown_submit_btn?.addEventListener('click', submitSelectedEvents);
-
+$addtional_features_toggle?.addEventListener('click', showAddtionalFeatures);
 
 loadEvents(sample_event_data);

@@ -19,3 +19,16 @@ body {
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+h1 {
+  margin-bottom: 0;
+}
+
+.addtional_features {
+  color: $base-color-purple;
+  
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
