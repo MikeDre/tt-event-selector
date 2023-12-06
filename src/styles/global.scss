@@ -1,0 +1,21 @@
+/*
+ * Global Styles
+ *
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  background-color: $bg-color;
+  font-family: $font-primary;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

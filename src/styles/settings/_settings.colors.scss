@@ -1,0 +1,20 @@
+/*
+ * Settings - Colors
+ *
+ */
+
+$base-color-black: #1b0702;
+$base-color-cream: #fbf7f4;
+$base-color-purple: #3f3981;
+$base-color-teal: #b2cec9;
+$base-color-salmon: #f3927a;
+
+$bg-color: $base-color-cream;
+
+.color-teal {
+  color: $base-color-teal;
+}
+
+.bg-color-green {
+  background-color: $base-color-teal;
+}
