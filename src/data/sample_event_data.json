@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Summer Party",
+    "date": "7th July 2023",
+    "time": "15:00"
+  },
+  {
+    "id": 1,
+    "title": "Christmas Party",
+    "date": "18th Dec 2023",
+    "time": "19:00"
+  },
+  {
+    "id": 1,
+    "title": "Half Marathon",
+    "date": "15th Sept 2024",
+    "time": "13:00"
+  }
+]
