@@ -6,18 +6,38 @@ const sample_event_data: EventItem[] = [
     time: "15:00"
   },
   {
-    id: 2, // Unique ID
+    id: 2,
     title: "Christmas Party",
     date: "18th Dec 2023",
     time: "19:00"
   },
   {
-    id: 3, // Unique ID
+    id: 3,
+    title: "Half Marathon",
+    date: "15th Sept 2024",
+    time: "13:00"
+  },
+  {
+    id: 4,
+    title: "Summer Party",
+    date: "7th July 2023",
+    time: "15:00"
+  },
+  {
+    id: 5,
+    title: "Christmas Party",
+    date: "18th Dec 2023",
+    time: "19:00"
+  },
+  {
+    id: 6,
     title: "Half Marathon",
     date: "15th Sept 2024",
     time: "13:00"
   }
 ];
+
+const placeholder_img = 'https://asset.brandfetch.io/idQsEE3RYo/idlTUPeODS.jpeg';
 
 type ClickTouchEvent = MouseEvent | TouchEvent;
 
@@ -30,32 +50,106 @@ type EventItem = {
 
 const $dropdown = document.getElementById('dropdown') as HTMLElement;
 const $dropdown_header = document.querySelector('.dropdown__header') as HTMLElement;
-const $dropdown__list = document.querySelector('.dropdown__list') as HTMLElement;
+const $dropdown_list = document.querySelector('.dropdown__list') as HTMLElement;
+const $dropdown_selection_overview = document.querySelector('.dropdown__selection-overview') as HTMLElement;
+const $dropdown_submit_btn = document.querySelector('.dropdown__selection-submit') as HTMLElement;
 
 function handleDropdownToggle(e: ClickTouchEvent) {
   $dropdown?.classList.toggle('active');
 }
 
-function handleDropdownItem(e: ClickTouchEvent) {
+function setSubmitDisabled(disabled: boolean) {
+
+  if (disabled) {
+    $dropdown_submit_btn.setAttribute("disabled", "");
+  } else {
+    $dropdown_submit_btn.removeAttribute("disabled");
+  }
+}
+
+function selectDropdownItem(e: ClickTouchEvent) {
   const target = e.target as HTMLElement;
 
   if (target && target.classList.contains('dropdown__item')) {
     target.classList.toggle('dropdown__item--selected');
+    updateSelectedItems();
   }
+}
+
+function updateSelectedItems() {
+  const totalSelectedItems = getSelectedTotalItems();
+
+  setSubmitDisabled(false);
+  
+  if (totalSelectedItems > 1) {
+    $dropdown_selection_overview.innerHTML = `${totalSelectedItems} events selected`;
+  } else if (totalSelectedItems === 1) {
+    $dropdown_selection_overview.innerHTML = `${totalSelectedItems} event selected`;
+  } else {
+    $dropdown_selection_overview.innerHTML = 'No selected events';
+    setSubmitDisabled(true);
+  }
+}
+
+function getSelectedTotalItems() {
+  const $selectedItems = $dropdown_list.querySelectorAll('.dropdown__item--selected');
+  
+  return $selectedItems.length;
+}
+
+function submitSelectedEvents() {
+  const totalSelectedItems = getSelectedTotalItems();
+
+  if (totalSelectedItems === 0) {
+    alert('Please select an event');
+    return;
+  }
+
+  const $selectedItems = $dropdown_list.querySelectorAll('.dropdown__item--selected');
+
+  let selectedEventIds: string[] = [];
+
+  $selectedItems.forEach(($selectedItem) => {
+    const eventId = $selectedItem.getAttribute('data-event-id');
+
+    if (eventId) {
+      selectedEventIds.push(eventId);
+    }
+  });
+
+  alert(`Selected Events: ${selectedEventIds.join(', ')}`);
 }
 
 function loadEvents(events: EventItem[]) {
   if (events.length === 0) return;
 
   events.forEach((event) => {
-    const listItem = document.createElement('li');
-    listItem.className = 'dropdown__item';
-    listItem.innerHTML = `<strong>${event.title}</strong> - ${event.time}, ${event.date}`;
-    $dropdown__list.appendChild(listItem);
+    const eventItem = document.createElement('li');
+    eventItem.className = 'dropdown__item';
+    eventItem.setAttribute('data-event-id', event.id.toString());
+    eventItem.innerHTML = `
+      <img class="dropdown__item-img" src="${placeholder_img}" alt="event-${event.title}" />
+      <span class="dropdown__item-meta">
+        <strong class="dropdown__item-title">${event.title}</strong>
+        <span class="dropdown__item-date"> ${event.time}, ${event.date}</span>
+      </span>
+    `;
+    $dropdown_list.appendChild(eventItem);
   });
+
+  const $dropdown_items = document.querySelectorAll('.dropdown__list li') as NodeListOf<HTMLElement>;
+
+  if ($dropdown_items.length !== 0) {
+    $dropdown_items.forEach(($dropdown_item) => {
+      $dropdown_item.addEventListener('click', selectDropdownItem);
+    });
+  }
+
+  updateSelectedItems();
 }
 
 $dropdown_header?.addEventListener('click', handleDropdownToggle);
-$dropdown__list?.addEventListener('click', handleDropdownItem);
+$dropdown_submit_btn?.addEventListener('click', submitSelectedEvents);
+
 
 loadEvents(sample_event_data);
