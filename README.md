@@ -1,5 +1,5 @@
 # TT Event Selector
-A simple dropdown event selector component that presents the IDs of selected events. I have included a preview of suggested additional features to please click 'Show addtional features' to toggle (these are not functional, please see Future Roadmap for full list of suggestions).
+A simple dropdown event selector component that presents the IDs of selected events. I have included a preview of suggested additional features, please click 'Show addtional features' to toggle (these are not functional, please see Future Roadmap for full list of suggestions).
 
 View online: https://tt-event-selector.vercel.app/
 
