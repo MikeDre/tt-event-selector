@@ -4,7 +4,7 @@
  */
 
 $dropdown__spacing: 1.25rem;
-$dropdown__spacing--sm: $dropdown__spacing / 2;
+$dropdown__spacing--sm: calc($dropdown__spacing / 2);
 $dropdown__spacing--lg: $dropdown__spacing * 2;
 
 #dropdown {
@@ -54,7 +54,7 @@ ul.dropdown__list {
   border-top: 2px solid rgba($base-color-black, 0.125);
   display: flex;
   flex-direction: column;
-  gap: $dropdown__spacing--sm / 2;
+  gap: calc($dropdown__spacing--sm / 2);
   list-style: none;
   margin-bottom: 0;
   max-height: 270px;
@@ -172,7 +172,7 @@ ul.dropdown__list {
   border-top: 2px solid rgba($base-color-black, 0.125);
   display: none;
   flex-direction: row;
-  gap: $dropdown__spacing--sm / 2;
+  gap: calc($dropdown__spacing--sm / 2);
   justify-content: space-between;
   list-style: none;
   margin-top: $dropdown__spacing--sm;

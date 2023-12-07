@@ -4,42 +4,43 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TT</title>
+    <title>TT Event Selector</title>
     <link rel="stylesheet" href="./dist/styles/main.css">
   </head>
 
   <body>
-    <header></header>
   
     <section class="container">
-
       <h1 class="font-secondary">Event Selector</h1>
-      <span class="addtional_features">Show addtional features</span>
+      <a href="#" class="addtional_features">Show addtional features</a>
   
       <div id="dropdown">
+
         <div class="dropdown__header" tabindex="0">
           <span>Select your event(s)</span>
           <i class="dropdown__chevron fa-solid fa-chevron-up"></i>
         </div>
+
         <div class="dropdown__container">
 
+          <!-- Future features-->
           <div class="dropdwn__extra-features">
             <input type="text" placeholder="Search.." name="" id="">
             <i class="dropdwn__datepicker fa-regular fa-calendar"></i>
           </div>
+          <!-- /Future features-->
 
-          <ul class="dropdown__list">
-          </ul>
+          <ul class="dropdown__list"></ul>
+
           <div class="dropdown__selection">
             <div class="dropdown__selection-overview"></div>
             <button class="dropdown__selection-submit" disabled>Submit</button>
           </div>
+
         </div>
       </div>
-  
     </section>
     
-    <footer></footer>
     <script src="./dist/index.js"></script>
     <script src="https://kit.fontawesome.com/f4f48f10b2.js" crossorigin="anonymous"></script>
   </body>

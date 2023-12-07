@@ -1,3 +1,12 @@
+type ClickTouchEvent = MouseEvent | TouchEvent;
+
+type EventItem = {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+};
+
 const sample_event_data: EventItem[] = [
   {
     id: 1,
@@ -38,16 +47,6 @@ const sample_event_data: EventItem[] = [
 ];
 
 const placeholder_img = 'https://asset.brandfetch.io/idQsEE3RYo/idlTUPeODS.jpeg';
-
-type ClickTouchEvent = MouseEvent | TouchEvent;
-
-type EventItem = {
-  id: number;
-  title: string;
-  date: string;
-  time: string;
-};
-
 const $dropdown = document.getElementById('dropdown') as HTMLElement;
 const $dropdown_header = document.querySelector('.dropdown__header') as HTMLElement;
 const $dropdown_list = document.querySelector('.dropdown__list') as HTMLElement;
@@ -123,7 +122,10 @@ function submitSelectedEvents() {
 }
 
 function loadEvents(events: EventItem[]) {
-  if (events.length === 0) return;
+  if (events.length === 0) {
+    console.error('No events found');
+    return;
+  }
 
   events.forEach((event) => {
     const eventItem = document.createElement('li');
